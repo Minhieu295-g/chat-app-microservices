@@ -7,7 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -21,10 +21,10 @@ public class AbsEntity implements Serializable {
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private Date createdAt;
+    private Instant createdAt;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private Date updatedAt;
+    private Instant updatedAt;
 
 }
