@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lock.chat.auth_service.util.UserStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import java.time.Instant;
 
 @Getter
