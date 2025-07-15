@@ -1,7 +1,6 @@
 package lock.chat.auth_service.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lock.chat.auth_service.dto.validator.Email;
 import lock.chat.auth_service.dto.validator.Password;
 import lock.chat.auth_service.dto.validator.PhoneNumber;
@@ -17,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
 public class UserRequestDTO implements Serializable {
 
     @NotBlank(message = "username must be not blank")

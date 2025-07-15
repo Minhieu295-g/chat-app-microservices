@@ -74,7 +74,6 @@ public class GlobalExceptionHandler {
         return errorResponse;
     }
 
-
     /**
      * Handle exception when the request not found data
      *

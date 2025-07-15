@@ -13,13 +13,20 @@ import java.util.UUID;
 @Slf4j
 public class Producer {
 
-    private final KafkaTemplate<String, BaseMessage<?>> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void send(String topic, UserProfileRequest dto) {
         BaseMessage<UserProfileRequest> base = wrap(dto, "UserProfile");
         log.info("send topic {}", topic);
         log.info("send message {}", base);
         kafkaTemplate.send(topic, base);
+    }
+
+    public void sendUserProfile(UserProfileRequest dto) {
+        BaseMessage<UserProfileRequest> base = wrap(dto, "UserProfile");
+        log.info("send topic {}","user.profile");
+        log.info("send message {}", base);
+        kafkaTemplate.send("user.profile", base);
     }
 
     private <T> BaseMessage<T> wrap(T payload, String type) {
