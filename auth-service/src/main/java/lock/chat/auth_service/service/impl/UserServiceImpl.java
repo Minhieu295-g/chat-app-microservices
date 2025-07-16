@@ -1,9 +1,7 @@
 package lock.chat.auth_service.service.impl;
 
 import lock.chat.auth_service.dto.request.UserRequestDTO;
-import lock.chat.auth_service.kafka.dto.request.UserProfileRequest;
-import lock.chat.auth_service.kafka.producer.EventPushliser;
-import lock.chat.auth_service.kafka.producer.Producer;
+import lock.chat.auth_service.kafka.dto.request.UserProfileDTO;
 import lock.chat.auth_service.kafka.producer.UserProfileProducer;
 import lock.chat.auth_service.model.User;
 import lock.chat.auth_service.repository.UserRepository;
@@ -28,8 +26,8 @@ public class UserServiceImpl implements UserService {
                 .email(userRequest.getEmail())
                 .build();
         userRepository.save(user);
-        UserProfileRequest request = UserProfileRequest.builder()
-                .id(user.getId())
+        UserProfileDTO request = UserProfileDTO.builder()
+                .userId(user.getId())
                 .fullName(userRequest.getFullName())
                 .gender(userRequest.isGender())
                 .numberPhone(userRequest.getNumberPhone())

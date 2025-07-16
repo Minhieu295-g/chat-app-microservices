@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Listener {
-
     @KafkaListener(topics = "auth-topic", groupId = "auth-group")
     public void listen(BaseMessage<?> message){
         System.out.println( "Received: " + message);

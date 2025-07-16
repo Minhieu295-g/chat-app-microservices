@@ -1,7 +1,7 @@
 package lock.chat.auth_service.kafka.producer;
 
 import lock.chat.auth_service.kafka.dto.BaseMessage;
-import lock.chat.auth_service.kafka.dto.request.UserProfileRequest;
+import lock.chat.auth_service.kafka.dto.request.UserProfileDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -15,15 +15,15 @@ public class Producer {
 
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void send(String topic, UserProfileRequest dto) {
-        BaseMessage<UserProfileRequest> base = wrap(dto, "UserProfile");
+    public void send(String topic, UserProfileDTO dto) {
+        BaseMessage<UserProfileDTO> base = wrap(dto, "UserProfile");
         log.info("send topic {}", topic);
         log.info("send message {}", base);
         kafkaTemplate.send(topic, base);
     }
 
-    public void sendUserProfile(UserProfileRequest dto) {
-        BaseMessage<UserProfileRequest> base = wrap(dto, "UserProfile");
+    public void sendUserProfile(UserProfileDTO dto) {
+        BaseMessage<UserProfileDTO> base = wrap(dto, "UserProfile");
         log.info("send topic {}","user.profile");
         log.info("send message {}", base);
         kafkaTemplate.send("user.profile", base);

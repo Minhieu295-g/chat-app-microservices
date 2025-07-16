@@ -4,15 +4,16 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import java.io.Serializable;
 
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserProfileRequest implements Serializable {
+public class UserProfileDTO implements Serializable {
 
-    String id;
+    String userId;
 
     String numberPhone;
 
